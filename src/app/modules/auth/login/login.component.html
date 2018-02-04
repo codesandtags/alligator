@@ -11,6 +11,7 @@
           ngModel email
           required
           #emailInput="ngModel"
+          autofocus
         >
         <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty.</mat-error>
         <mat-error *ngIf="!emailInput.hasError('required')">The email is invalid.</mat-error>
@@ -30,7 +31,7 @@
         <mat-error>Has to be at least 6 characters</mat-error>
       </mat-form-field>
       <br>
-      <button type="submit" mat-raised-button color="primary">Login</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Login</button>
     </form>
   </mat-card>
 </section>
