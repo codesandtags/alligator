@@ -4,19 +4,21 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from './material.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     FooterComponent,
     PageNotFoundComponent
   ],
