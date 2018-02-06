@@ -2,6 +2,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
-body {
+body, html {
   font-family: 'Roboto', sans-serif;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }

@@ -1,0 +1,24 @@
+// Import theming functions
+@import '~@angular/material/theming';
+
+// Colors
+$red: #F16664;
+$green_1: #007D8C;
+$green_2: #6BB7B9;
+$green_3: #79CCCD;
+$beige: #FFF6E6;
+$font_primary: #222222;
+$font_secondary: $beige;
+
+// Sizes
+$font_base: 16px;
+
+// Media Queries
+// Small devices (landscape phones, 576px and up)
+$xs: 576px;
+// Medium devices (tablets, 768px and up)
+$sm: 768px;
+// Large devices (desktops, 992px and up)
+$lg: 9928px;
+// Extra large devices (large desktops, 1200px and up)
+$xl: 1200px;
