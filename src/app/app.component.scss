@@ -1,0 +1,49 @@
+@import "../sass/vars";
+
+mat-sidenav, mat-sidenav-container, mat-sidenav-content {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+.navigation-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  a {
+    color: $light-primary-text;
+    font-size: 16px;
+    font-weight: normal;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      color: $light-secondary-text;
+    }
+  }
+}
+
+.logo a {
+  color: $light-primary-text;
+  font-size: 16px;
+  font-weight: normal;
+  text-decoration: none;
+
+  mat-icon {
+    font-size: 14px;
+    padding-left: 10px;
+  }
+
+  &:hover,
+  &:active {
+    color: $light-secondary-text;
+  }
+}
+
+.nav-caption {
+  display: inline-block;
+  padding-left: 6px;
+}
