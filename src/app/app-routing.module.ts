@@ -24,6 +24,14 @@ const routes: Routes = [
     loadChildren: 'app/modules/schedule/schedule.module#ScheduleModule'
   },
   {
+    path: 'home',
+    loadChildren: 'app/modules/home/home.module#HomeModule'
+  },
+  {
+    path: '',
+    loadChildren: 'app/modules/home/home.module#HomeModule'
+  },
+  {
     path: '404',
     component: PageNotFoundComponent
   },

@@ -5,6 +5,9 @@ import { MaterialModule } from './material.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
+import { HeaderComponent } from './components/navigation/header/header.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -12,7 +15,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
+  ],
+  declarations: [
+    FooterComponent,
+    PageNotFoundComponent,
+    SidenavListComponent,
+    HeaderComponent
   ],
   exports: [
     MaterialModule,
@@ -20,11 +30,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     FooterComponent,
-    PageNotFoundComponent
-  ],
-  declarations: [
-    FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeaderComponent,
+    SidenavListComponent
   ]
 })
 export class SharedModule {
