@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <div fxShow.xs fxHide.gt-xs>
+    <button (click)="onToggleSideNav()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div fxFlex fxLayout class="logo" fxLayoutAlign="start center">
+    <a routerLink="/" fxLayout fxLayoutGap="15px">
+      Alligator
+    </a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/reports">Reports</a></li>
+      <li><a routerLink="/interview">Interview</a></li>
+      <li><a routerLink="/schedule">Schedule</a></li>
+      <li><a routerLink="/admin">Admin</a></li>
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/logout">Logout</a></li>
+    </ul>
+  </div>
+</mat-toolbar>
