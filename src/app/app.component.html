@@ -1,23 +1,23 @@
 <mat-sidenav-container>
   <mat-sidenav #sideNav role="navigation">
     <mat-nav-list>
-      <a mat-list-item routerLink="/reports">
+      <a mat-list-item routerLink="/reports" (click)="sideNav.close()">
         <mat-icon>dvr</mat-icon>
         <span class="nav-caption">Reports</span>
       </a>
-      <a mat-list-item routerLink="/interview">
+      <a mat-list-item routerLink="/interview" (click)="sideNav.close()">
         <mat-icon>contacts</mat-icon>
         <span class="nav-caption">Interview</span>
       </a>
-      <a mat-list-item routerLink="/schedule">
+      <a mat-list-item routerLink="/schedule" (click)="sideNav.close()">
         <mat-icon>schedule</mat-icon>
         <span class="nav-caption">Schedule</span>
       </a>
-      <a mat-list-item routerLink="/admin">
+      <a mat-list-item routerLink="/admin" (click)="sideNav.close()">
         <mat-icon>build</mat-icon>
         <span class="nav-caption">Admin</span>
       </a>
-      <a mat-list-item routerLink="/login">
+      <a mat-list-item routerLink="/login" (click)="sideNav.close()">
         <mat-icon>account_circle</mat-icon>
         <span class="nav-caption">Login</span>
       </a>
