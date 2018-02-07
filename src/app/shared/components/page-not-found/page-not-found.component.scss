@@ -1,0 +1,15 @@
+.page-not-found {
+  background: white;
+  section {
+    text-align: center;
+    img {
+      max-width: 400px;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 18px;
+      display: block;
+    }
+  }
+}

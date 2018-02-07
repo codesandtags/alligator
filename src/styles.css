@@ -8,3 +8,8 @@ body, html {
   padding: 0;
   margin: 0;
 }
+
+.dashboard {
+  padding: 20px;
+  width: 100%;
+}
