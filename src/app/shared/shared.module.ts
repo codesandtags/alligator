@@ -8,6 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { RouterModule } from '@angular/router';
+import { QuestionListComponent } from './components/question/question-list/question-list.component';
+import { QuestionDetailComponent } from './components/question/question-detail/question-detail.component';
+import { ApplicantProfileComponent } from './components/applicant-profile/applicant-profile.component';
 
 @NgModule({
   imports: [
@@ -22,7 +25,10 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     PageNotFoundComponent,
     SidenavListComponent,
-    HeaderComponent
+    HeaderComponent,
+    QuestionListComponent,
+    QuestionDetailComponent,
+    ApplicantProfileComponent
   ],
   exports: [
     MaterialModule,
@@ -32,7 +38,10 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    QuestionListComponent,
+    QuestionDetailComponent,
+    ApplicantProfileComponent
   ]
 })
 export class SharedModule {
