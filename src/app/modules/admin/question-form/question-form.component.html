@@ -5,15 +5,15 @@
       <mat-card>
         <mat-card-content fxLayout="column" fxLayoutAlign="center" fxLayoutGap="15px">
           <mat-form-field>
-            <input matInput placeholder="Question">
+            <input matInput placeholder="Question" required>
           </mat-form-field>
           <mat-form-field>
-            <mat-select placeholder="Category">
+            <mat-select placeholder="Category" required>
               <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
-            <mat-select placeholder="Weighted">
+            <mat-select placeholder="Weighted" required>
               <mat-option value="1">1</mat-option>
               <mat-option value="2">2</mat-option>
               <mat-option value="3">3</mat-option>

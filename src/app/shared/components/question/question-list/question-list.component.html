@@ -1,3 +1,5 @@
-<p>
-  question-list works!
-</p>
+<div class="question-list">
+  <div *ngFor="let question of questions">
+    {{question.category}} - {{question.questionValue}}
+  </div>
+</div>

@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { QuestionListComponent } from './components/question/question-list/question-list.component';
 import { QuestionDetailComponent } from './components/question/question-detail/question-detail.component';
 import { ApplicantProfileComponent } from './components/applicant-profile/applicant-profile.component';
+import { QuestionService } from './components/question/question.service';
+import { AuthService } from '../modules/auth/auth.service';
 
 @NgModule({
   imports: [
@@ -30,6 +32,9 @@ import { ApplicantProfileComponent } from './components/applicant-profile/applic
     QuestionDetailComponent,
     ApplicantProfileComponent
   ],
+  providers: [
+    QuestionService
+  ],
   exports: [
     MaterialModule,
     FlexLayoutModule,
@@ -46,3 +51,4 @@ import { ApplicantProfileComponent } from './components/applicant-profile/applic
 })
 export class SharedModule {
 }
+

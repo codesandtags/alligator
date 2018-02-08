@@ -13,4 +13,5 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   declarations: [HomeDashboardComponent]
 })
-export class HomeModule { }
+export class HomeModule {
+}
