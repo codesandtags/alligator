@@ -4,7 +4,7 @@ import {
   MatCardModule, MatCheckboxModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatListModule, MatSelectModule,
+  MatInputModule, MatListModule, MatProgressSpinnerModule, MatSelectModule,
   MatSidenavModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
@@ -21,7 +21,8 @@ import {
     MatListModule,
     MatTabsModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatButtonModule,
@@ -34,7 +35,8 @@ import {
     MatListModule,
     MatTabsModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule {
