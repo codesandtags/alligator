@@ -1,32 +1,24 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Router } from '@angular/router';
-import { UrlConstants } from '../../../shared/constants/url-constants';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   private authSubscription: Subscription;
 
   constructor(private fb: FormBuilder,
-              private authService: AuthService,
-              private router: Router) {
+              private authService: AuthService) {
   }
 
   ngOnInit() {
     this.initializeForm();
-    this.handleAuth();
-  }
-
-  ngOnDestroy(): void {
-    this.authSubscription.unsubscribe();
   }
 
   public onSubmit(): void {
@@ -45,14 +37,5 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-  }
-
-  private handleAuth() {
-    this.authSubscription = this.authService
-      .authChange.subscribe(authStatus => {
-        if (authStatus) {
-          this.router.navigate([UrlConstants.ROUTES.HOME]);
-        }
-      });
   }
 }
