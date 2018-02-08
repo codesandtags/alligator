@@ -3,19 +3,19 @@
     <mat-icon>home</mat-icon>
     <span class="nav-caption">Home</span>
   </a>
-  <a mat-list-item routerLink="/reports" (click)="onCloseSideNav()" *ngIf="isAuth">
+  <a mat-list-item [routerLink]="[ROUTES.REPORTS]" (click)="onCloseSideNav()" *ngIf="isAuth">
     <mat-icon>dvr</mat-icon>
     <span class="nav-caption">Reports</span>
   </a>
-  <a mat-list-item routerLink="/interview" (click)="onCloseSideNav()" *ngIf="isAuth">
+  <a mat-list-item [routerLink]="[ROUTES.INTERVIEW]" (click)="onCloseSideNav()" *ngIf="isAuth">
     <mat-icon>contacts</mat-icon>
     <span class="nav-caption">Interview</span>
   </a>
-  <a mat-list-item routerLink="/schedule" (click)="onCloseSideNav()" *ngIf="isAuth">
+  <a mat-list-item [routerLink]="[ROUTES.SCHEDULE]" (click)="onCloseSideNav()" *ngIf="isAuth">
     <mat-icon>schedule</mat-icon>
     <span class="nav-caption">Schedule</span>
   </a>
-  <a mat-list-item routerLink="/admin" (click)="onCloseSideNav()" *ngIf="isAuth">
+  <a mat-list-item [routerLink]="[ROUTES.ADMIN]" (click)="onCloseSideNav()" *ngIf="isAuth">
     <mat-icon>build</mat-icon>
     <span class="nav-caption">Admin</span>
   </a>

@@ -11,12 +11,12 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
-      <li><a routerLink="/home" *ngIf="isAuth">Home</a></li>
-      <li><a routerLink="/reports" *ngIf="isAuth">Reports</a></li>
-      <li><a routerLink="/interview" *ngIf="isAuth">Interview</a></li>
-      <li><a routerLink="/schedule" *ngIf="isAuth">Schedule</a></li>
-      <li><a routerLink="/admin" *ngIf="isAuth">Admin</a></li>
-      <li><a routerLink="/login" *ngIf="!isAuth">Login</a></li>
+      <li><a [routerLink]="[ROUTES.HOME]" *ngIf="isAuth">Home</a></li>
+      <li><a [routerLink]="[ROUTES.REPORTS]" *ngIf="isAuth">Reports</a></li>
+      <li><a [routerLink]="[ROUTES.INTERVIEW]" *ngIf="isAuth">Interview</a></li>
+      <li><a [routerLink]="[ROUTES.SCHEDULE]" *ngIf="isAuth">Schedule</a></li>
+      <li><a [routerLink]="[ROUTES.ADMIN]" *ngIf="isAuth">Admin</a></li>
+      <li><a [routerLink]="[ROUTES.LOGIN]" *ngIf="!isAuth">Login</a></li>
       <li><a *ngIf="isAuth" (click)="onLogout()">Logout</a></li>
     </ul>
   </div>

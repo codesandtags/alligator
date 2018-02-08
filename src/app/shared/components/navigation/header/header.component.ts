@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { AuthService } from '../../../../modules/auth/auth.service';
 import { Subscription } from 'rxjs/Subscription';
+import { UrlConstants } from '../../../constants/url-constants';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Output() sideNavToggle = new EventEmitter<void>();
   isAuth = false;
   authSubscription: Subscription;
+  ROUTES = UrlConstants.ROUTES;
 
   constructor(private authService: AuthService) {
   }
