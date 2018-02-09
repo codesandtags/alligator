@@ -5,10 +5,10 @@
   <mat-sidenav-content>
     <div fxFill fxLayout="column">
       <app-header (sideNavToggle)="sideNav.toggle()"></app-header>
-      <main fxFlex="85">
+      <main fxFlex>
         <router-outlet></router-outlet>
       </main>
-      <!--<app-footer fxFlex="10"></app-footer>-->
+      <app-footer color="primary"></app-footer>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

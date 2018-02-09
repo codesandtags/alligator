@@ -1,6 +1,10 @@
 @import "../../../../sass/vars";
 
 footer {
-  background: mat-color($mat-blue, 900);
+  background: $primay;
   color: $light-primary-text;
+
+  div {
+    padding: 20px 0;
+  }
 }

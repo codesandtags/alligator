@@ -1,7 +1,9 @@
-import { QuestionCategory } from '../enums/question-category';
+import { QuestionCategoryModel } from './question-category.model';
 
 export interface QuestionModel {
-  category: QuestionCategory;
+  id?: string;
+  questionValue: string;
+  category: QuestionCategoryModel;
   goal: string;
   expectedAnswer: string;
   level: string;
