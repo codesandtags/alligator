@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { AuthGuard } from './modules/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -9,11 +10,13 @@ const routes: Routes = [
   },
   {
     path: 'reports',
-    loadChildren: 'app/modules/reports/reports.module#ReportsModule'
+    loadChildren: 'app/modules/reports/reports.module#ReportsModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'interview',
-    loadChildren: 'app/modules/interview/interview.module#InterviewModule'
+    loadChildren: 'app/modules/interview/interview.module#InterviewModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin',
@@ -21,15 +24,18 @@ const routes: Routes = [
   },
   {
     path: 'schedule',
-    loadChildren: 'app/modules/schedule/schedule.module#ScheduleModule'
+    loadChildren: 'app/modules/schedule/schedule.module#ScheduleModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'home',
-    loadChildren: 'app/modules/home/home.module#HomeModule'
+    loadChildren: 'app/modules/home/home.module#HomeModule',
+    canActivate: [AuthGuard]
   },
   {
     path: '',
-    loadChildren: 'app/modules/home/home.module#HomeModule'
+    loadChildren: 'app/modules/home/home.module#HomeModule',
+    canActivate: [AuthGuard]
   },
   {
     path: '404',

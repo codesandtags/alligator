@@ -1,6 +1,13 @@
 <div class="dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayoutWrap="wrap" fxLayoutGap="15px">
-  <h1 fxFill>Add question</h1>
   <section fxFill>
+    <header fxLayout fxLayoutAlign="start center">
+      <div >
+        <button mat-button color="accent" routerLink="../../">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <h1>Add question</h1>
+    </header>
     <form>
       <mat-card>
         <mat-card-content fxLayout="column" fxLayoutAlign="center" fxLayoutGap="15px">
@@ -9,7 +16,7 @@
           </mat-form-field>
           <mat-form-field>
             <mat-select placeholder="Category" required>
-              <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+              <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>

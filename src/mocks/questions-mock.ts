@@ -1,13 +1,40 @@
 import { QuestionModel } from '../app/shared/models/question.model';
-import { QuestionCategory } from '../app/shared/enums/question-category';
+import { QuestionCategoryModel } from '../app/shared/models/question-category.model';
 
 export class QuestionsMock {
 
-  public static readonly questions: [QuestionModel] = [
+  public static readonly questionCategories: QuestionCategoryModel[] = [
+    {
+      id: 1,
+      name: 'Front End'
+    },
+    {
+      id: 2,
+      name: 'Back End'
+    },
+    {
+      id: 3,
+      name: 'Android'
+    },
+    {
+      id: 4,
+      name: 'iOs'
+    },
+    {
+      id: 5,
+      name: 'General'
+    },
+    {
+      id: 6,
+      name: 'Fundamentals'
+    }
+  ];
+
+  public static readonly questions: QuestionModel[] = [
     {
       id: 'q1',
       questionValue: 'What was the first; the egg or the chicken?',
-      category: QuestionCategory.GENERAL,
+      category: QuestionsMock.questionCategories[4],
       favoriteQuestion: true,
       expectedAnswer: 'Cocoman',
       goal: 'Evaluate the capacity to think out the box',
@@ -17,7 +44,7 @@ export class QuestionsMock {
     {
       id: 'q2',
       questionValue: 'Which are the data types in JavaScript',
-      category: QuestionCategory.FRONT_END,
+      category: QuestionsMock.questionCategories[0],
       favoriteQuestion: false,
       expectedAnswer: 'Undefined, number, array, object, string, boolean',
       goal: 'Knowledge about fundamentals in JavaScript',
@@ -27,7 +54,7 @@ export class QuestionsMock {
     {
       id: 'q3',
       questionValue: 'This is a question',
-      category: QuestionCategory.FRONT_END,
+      category: QuestionsMock.questionCategories[2],
       favoriteQuestion: false,
       expectedAnswer: 'This is the expected answer',
       goal: 'This is the goal',
@@ -37,7 +64,7 @@ export class QuestionsMock {
     {
       id: 'q4',
       questionValue: 'This is a question',
-      category: QuestionCategory.FRONT_END,
+      category: QuestionsMock.questionCategories[3],
       favoriteQuestion: false,
       expectedAnswer: 'This is the expected answer',
       goal: 'This is the goal',
@@ -47,7 +74,7 @@ export class QuestionsMock {
     {
       id: 'q5',
       questionValue: 'This is a question',
-      category: QuestionCategory.GENERAL,
+      category: QuestionsMock.questionCategories[4],
       favoriteQuestion: false,
       expectedAnswer: 'This is the expected answer',
       goal: 'This is the goal',
@@ -57,7 +84,7 @@ export class QuestionsMock {
     {
       id: 'q6',
       questionValue: 'This is a question',
-      category: QuestionCategory.GENERAL,
+      category: QuestionsMock.questionCategories[5],
       favoriteQuestion: false,
       expectedAnswer: 'This is the expected answer',
       goal: 'This is the goal',
@@ -67,7 +94,7 @@ export class QuestionsMock {
     {
       id: 'q7',
       questionValue: 'This is a question',
-      category: QuestionCategory.FRONT_END,
+      category: QuestionsMock.questionCategories[0],
       favoriteQuestion: false,
       expectedAnswer: 'This is the expected answer',
       goal: 'This is the goal',
@@ -77,7 +104,7 @@ export class QuestionsMock {
     {
       id: 'q8',
       questionValue: 'This is a question',
-      category: QuestionCategory.BACK_END,
+      category: QuestionsMock.questionCategories[1],
       favoriteQuestion: false,
       expectedAnswer: 'This is the expected answer',
       goal: 'This is the goal',
@@ -87,7 +114,7 @@ export class QuestionsMock {
     {
       id: 'q9',
       questionValue: 'This is a question',
-      category: QuestionCategory.MOBILE_IOS,
+      category: QuestionsMock.questionCategories[2],
       favoriteQuestion: false,
       expectedAnswer: 'This is the expected answer',
       goal: 'This is the goal',
@@ -97,7 +124,7 @@ export class QuestionsMock {
     {
       id: 'q10',
       questionValue: 'This is a question',
-      category: QuestionCategory.MOBILE_ANDROID,
+      category: QuestionsMock.questionCategories[3],
       favoriteQuestion: false,
       expectedAnswer: 'This is the expected answer',
       goal: 'This is the goal',

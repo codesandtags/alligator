@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionCategory } from '../../../shared/enums/question-category';
+import { QuestionCategoryModel } from '../../../shared/models/question-category.model';
+import { QuestionService } from '../../../shared/components/question/question.service';
 
 @Component({
   selector: 'app-question-form',
@@ -8,9 +9,9 @@ import { QuestionCategory } from '../../../shared/enums/question-category';
 })
 export class QuestionFormComponent implements OnInit {
 
-  categories: [QuestionCategory];
+  categories: QuestionCategoryModel[];
 
-  constructor() {
+  constructor(private questionService: QuestionService) {
   }
 
   ngOnInit() {
@@ -18,13 +19,7 @@ export class QuestionFormComponent implements OnInit {
   }
 
   private setCategories(): void {
-    this.categories = [
-      QuestionCategory.BACK_END,
-      QuestionCategory.FRONT_END,
-      QuestionCategory.MOBILE_IOS,
-      QuestionCategory.MOBILE_ANDROID,
-      QuestionCategory.GENERAL
-    ];
+    this.categories = this.questionService.getQuestionCategories();
   }
 
 }

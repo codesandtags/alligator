@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { QuestionModel } from '../../models/question.model';
 import { QuestionsMock } from '../../../../mocks/questions-mock';
-import { QuestionCategory } from '../../enums/question-category';
+import { QuestionCategoryModel } from '../../models/question-category.model';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class QuestionService {
     return QuestionsMock.questions;
   }
 
-  public getQuestionsByCategory(category: QuestionCategory): Array<QuestionModel> {
+  public getQuestionsByCategory(category: QuestionCategoryModel): Array<QuestionModel> {
     return QuestionsMock.questions
       .filter(question => question.category === category);
   }
@@ -25,6 +25,10 @@ export class QuestionService {
   }
 
   public updateQuestion(question: QuestionModel): void {
+  }
+
+  public getQuestionCategories(): QuestionCategoryModel[] {
+    return QuestionsMock.questionCategories;
   }
 
 }
