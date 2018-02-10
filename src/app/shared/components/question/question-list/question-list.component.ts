@@ -40,7 +40,7 @@ export class QuestionListComponent implements OnInit, AfterViewInit {
   }
 
   private customFilter(data: QuestionModel, filter: string): boolean {
-    const textToFilter = [data.category.name, data.questionValue].join().toLowerCase();
+    const textToFilter = [data.category.name, data.question].join().toLowerCase();
     return textToFilter.includes(filter);
   }
 

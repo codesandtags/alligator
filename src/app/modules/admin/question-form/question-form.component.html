@@ -1,38 +1,51 @@
 <div class="dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayoutWrap="wrap" fxLayoutGap="15px">
   <section fxFill>
     <header fxLayout fxLayoutAlign="start center">
-      <div >
+      <div>
         <button mat-button color="accent" routerLink="../../">
           <mat-icon>arrow_back</mat-icon>
         </button>
       </div>
       <h1>Add question</h1>
     </header>
-    <form>
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
       <mat-card>
         <mat-card-content fxLayout="column" fxLayoutAlign="center" fxLayoutGap="15px">
           <mat-form-field>
-            <input matInput placeholder="Question" required>
+            <input matInput placeholder="Question" name="question" formControlName="question" required>
+            <mat-error *ngIf="questionForm.get('question').hasError('required')">Do not forget to type the question.
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <mat-select placeholder="Category" required>
-              <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+            <mat-select placeholder="Category" name="category" formControlName="category" required>
+              <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
             </mat-select>
+            <mat-error *ngIf="questionForm.get('category').hasError('required')">The category is required.</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <mat-select placeholder="Weighted" required>
+            <mat-select placeholder="Weighted" name="weighted" formControlName="weighted" required>
               <mat-option value="1">1</mat-option>
               <mat-option value="2">2</mat-option>
               <mat-option value="3">3</mat-option>
             </mat-select>
+            <mat-error *ngIf="questionForm.get('weighted').hasError('required')">The weighted is required.</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <textarea matInput placeholder="Goal to evaluate"></textarea>
+            <mat-select placeholder="Level" name="level" formControlName="level" required>
+              <mat-option value="1">1</mat-option>
+              <mat-option value="2">2</mat-option>
+              <mat-option value="3">3</mat-option>
+            </mat-select>
+            <mat-error *ngIf="questionForm.get('level').hasError('required')">The level is required.</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <textarea matInput placeholder="Expected answer"></textarea>
+            <textarea matInput name="goal" formControlName="goal" placeholder="Goal to evaluate"></textarea>
           </mat-form-field>
-          <mat-checkbox>
+          <mat-form-field>
+            <textarea matInput name="expectedAnswer" formControlName="expectedAnswer"
+                      placeholder="Expected answer"></textarea>
+          </mat-form-field>
+          <mat-checkbox name="isFavorite" formControlName="isFavorite">
             Mark as favorite question
           </mat-checkbox>
         </mat-card-content>
