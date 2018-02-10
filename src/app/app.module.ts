@@ -8,6 +8,9 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './modules/auth/auth.service';
 import { AuthGuard } from './modules/auth/auth.guard';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { AuthGuard } from './modules/auth/auth.guard';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [
     AuthService,

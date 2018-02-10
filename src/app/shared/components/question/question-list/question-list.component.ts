@@ -12,7 +12,7 @@ export class QuestionListComponent implements OnInit, AfterViewInit {
 
   questions: Array<QuestionModel>;
   dataSource = new MatTableDataSource<QuestionModel>(this.questions);
-  displayedColumns = ['category', 'question'];
+  displayedColumns = ['id', 'category', 'question'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -30,6 +30,18 @@ export class QuestionListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+    this.dataSource.filterPredicate = this.customFilter;
+  }
+
+  private customFilter(data: QuestionModel, filter: string): boolean {
+    const textToFilter = [data.category.name, data.question].join().toLowerCase();
+    return textToFilter.includes(filter);
   }
 
   private getQuestions() {
