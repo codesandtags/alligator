@@ -32,7 +32,7 @@ export class QuestionsMock {
 
   public static readonly questions: QuestionModel[] = [
     {
-      id: 'q1',
+      id: '1',
       questionValue: 'What was the first; the egg or the chicken?',
       category: QuestionsMock.questionCategories[4],
       favoriteQuestion: true,
@@ -42,7 +42,7 @@ export class QuestionsMock {
       weighted: '1'
     },
     {
-      id: 'q2',
+      id: '2',
       questionValue: 'Which are the data types in JavaScript',
       category: QuestionsMock.questionCategories[0],
       favoriteQuestion: false,
@@ -52,7 +52,7 @@ export class QuestionsMock {
       weighted: '1'
     },
     {
-      id: 'q3',
+      id: '3',
       questionValue: 'This is a question',
       category: QuestionsMock.questionCategories[2],
       favoriteQuestion: false,
@@ -62,7 +62,7 @@ export class QuestionsMock {
       weighted: '1'
     },
     {
-      id: 'q4',
+      id: '4',
       questionValue: 'This is a question',
       category: QuestionsMock.questionCategories[3],
       favoriteQuestion: false,
@@ -72,7 +72,7 @@ export class QuestionsMock {
       weighted: '1'
     },
     {
-      id: 'q5',
+      id: '5',
       questionValue: 'This is a question',
       category: QuestionsMock.questionCategories[4],
       favoriteQuestion: false,
@@ -82,7 +82,7 @@ export class QuestionsMock {
       weighted: '1'
     },
     {
-      id: 'q6',
+      id: '6',
       questionValue: 'This is a question',
       category: QuestionsMock.questionCategories[5],
       favoriteQuestion: false,
@@ -92,7 +92,7 @@ export class QuestionsMock {
       weighted: '1'
     },
     {
-      id: 'q7',
+      id: '7',
       questionValue: 'This is a question',
       category: QuestionsMock.questionCategories[0],
       favoriteQuestion: false,
@@ -102,7 +102,7 @@ export class QuestionsMock {
       weighted: '1'
     },
     {
-      id: 'q8',
+      id: '8',
       questionValue: 'This is a question',
       category: QuestionsMock.questionCategories[1],
       favoriteQuestion: false,
@@ -112,7 +112,7 @@ export class QuestionsMock {
       weighted: '1'
     },
     {
-      id: 'q9',
+      id: '9',
       questionValue: 'This is a question',
       category: QuestionsMock.questionCategories[2],
       favoriteQuestion: false,
@@ -122,9 +122,29 @@ export class QuestionsMock {
       weighted: '1'
     },
     {
-      id: 'q10',
+      id: '10',
       questionValue: 'This is a question',
       category: QuestionsMock.questionCategories[3],
+      favoriteQuestion: false,
+      expectedAnswer: 'This is the expected answer',
+      goal: 'This is the goal',
+      level: '2',
+      weighted: '3'
+    },
+    {
+      id: '11',
+      questionValue: 'This is a question',
+      category: QuestionsMock.questionCategories[1],
+      favoriteQuestion: false,
+      expectedAnswer: 'This is the expected answer',
+      goal: 'This is the goal',
+      level: '2',
+      weighted: '3'
+    },
+    {
+      id: '12',
+      questionValue: 'This is a question',
+      category: QuestionsMock.questionCategories[1],
       favoriteQuestion: false,
       expectedAnswer: 'This is the expected answer',
       goal: 'This is the goal',

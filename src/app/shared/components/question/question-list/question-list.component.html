@@ -1,16 +1,29 @@
 <div class="question-list">
+
+  <div class="example-header" fxLayout="column" fxLayoutGap="20px">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
   <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort>
 
       <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id.</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}}</mat-cell>
+      </ng-container>
+
+      <!-- Category Column -->
       <ng-container matColumnDef="category">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Category.</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.category.name}}</mat-cell>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="question">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Question</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Question</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.questionValue}}</mat-cell>
       </ng-container>
 
