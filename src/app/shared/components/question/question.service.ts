@@ -2,19 +2,42 @@ import { Injectable } from '@angular/core';
 import { QuestionModel } from '../../models/question.model';
 import { QuestionsMock } from '../../../../mocks/questions-mock';
 import { QuestionCategoryModel } from '../../models/question-category.model';
-import { Subject } from 'rxjs/Subject';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { FirebaseConstants } from '../../constants/firebase-constants';
 import * as firebase from 'firebase/app';
+import { Subject } from 'rxjs/Subject';
 import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
 export class QuestionService {
 
-  questionChange = new Subject<boolean>();
+  questionsChanged = new Subject<QuestionModel[]>();
 
   constructor(private db: AngularFirestore) {
+  }
+
+  public fetchAllQuestions() {
+    this.db
+      .collection(FirebaseConstants.COLLECTIONS.QUESTIONS)
+      .snapshotChanges()
+      .map(dataArray => {
+        return dataArray.map(data => {
+          return {
+            id: data.payload.doc.id,
+            question: data.payload.doc.data().question,
+            category: data.payload.doc.data().category,
+            goal: data.payload.doc.data().goal,
+            expectedAnswer: data.payload.doc.data().expectedAnswer,
+            level: data.payload.doc.data().level,
+            weighted: data.payload.doc.data().weighted,
+            isFavorite: data.payload.doc.data().isFavorite
+          };
+        });
+      })
+      .subscribe((questions: QuestionModel[]) => {
+        this.questionsChanged.next([...questions]);
+      });
   }
 
   public getAllQuestions(): Array<QuestionModel> {
