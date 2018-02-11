@@ -1,9 +1,8 @@
-import { QuestionCategoryModel } from './question-category.model';
-
 export interface QuestionModel {
   id?: string;
   question: string;
-  category: QuestionCategoryModel;
+  category: number;
+  categoryName?: string;
   goal: string;
   expectedAnswer: string;
   level: number;

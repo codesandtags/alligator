@@ -2,11 +2,11 @@
   <section fxFill>
     <header fxLayout fxLayoutAlign="start center">
       <div>
-        <button mat-button color="accent" routerLink="../../">
+        <button mat-button color="accent" routerLink="/admin/">
           <mat-icon>arrow_back</mat-icon>
         </button>
       </div>
-      <h1>Add question</h1>
+      <h1>{{formModeText}} question</h1>
     </header>
     <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
       <mat-card>
@@ -18,7 +18,7 @@
           </mat-form-field>
           <mat-form-field>
             <mat-select placeholder="Category" name="category" formControlName="category" required>
-              <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+              <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
             </mat-select>
             <mat-error *ngIf="questionForm.get('category').hasError('required')">The category is required.</mat-error>
           </mat-form-field>
@@ -50,7 +50,7 @@
           </mat-checkbox>
         </mat-card-content>
         <mat-card-actions fxLayout="row" fxLayoutAlign="center">
-          <button mat-button mat-raised-button color="primary">Add</button>
+          <button mat-button mat-raised-button color="primary">{{formModeText}}</button>
         </mat-card-actions>
       </mat-card>
     </form>

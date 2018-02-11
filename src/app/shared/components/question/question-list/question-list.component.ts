@@ -1,20 +1,24 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { QuestionService } from '../question.service';
 import { QuestionModel } from '../../../models/question.model';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
+import { UrlConstants } from '../../../constants/url-constants';
 
 @Component({
   selector: 'app-question-list',
   templateUrl: './question-list.component.html',
   styleUrls: ['./question-list.component.scss']
 })
-export class QuestionListComponent implements OnInit, AfterViewInit {
+export class QuestionListComponent implements OnInit, OnDestroy {
 
-  questions: Array<QuestionModel>;
+  questions: QuestionModel[];
   dataSource = new MatTableDataSource<QuestionModel>(this.questions);
-  displayedColumns = ['id', 'category', 'question'];
+  questionSubscription: Subscription;
+  displayedColumns = ['level', 'categoryName', 'question', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  EDIT_QUESTION = UrlConstants.ROUTES.ADMIN_EDIT_QUESTION;
 
   constructor(private questionService: QuestionService) {
   }
@@ -23,13 +27,8 @@ export class QuestionListComponent implements OnInit, AfterViewInit {
     this.getQuestions();
   }
 
-  /**
-   * Set the sort and paginator after the view init since this component will
-   * be able to query its view for the initialized sort.
-   */
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+  ngOnDestroy(): void {
+    this.questionSubscription.unsubscribe();
   }
 
   applyFilter(filterValue: string) {
@@ -40,14 +39,20 @@ export class QuestionListComponent implements OnInit, AfterViewInit {
   }
 
   private customFilter(data: QuestionModel, filter: string): boolean {
-    const textToFilter = [data.category.name, data.question].join().toLowerCase();
+    const textToFilter = [data.categoryName, data.question].join().toLowerCase();
     return textToFilter.includes(filter);
   }
 
   private getQuestions() {
-    this.questions = this.questionService.getAllQuestions();
-    this.dataSource = new MatTableDataSource<QuestionModel>(this.questions);
-    // this.questions = this.questionService.getQuestionsByCategory(QuestionCategoryModel.FRONT_END);
+    this.questionSubscription = this.questionService
+      .questionsChanged
+      .subscribe(questions => {
+        this.questions = questions;
+        this.dataSource = new MatTableDataSource<QuestionModel>(this.questions);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      });
+    this.questionService.fetchAllQuestions();
   }
 
 }

@@ -5,6 +5,8 @@ export class UrlConstants {
     REPORTS: '/reports',
     INTERVIEW: '/interview',
     SCHEDULE: '/schedule',
-    ADMIN: '/admin'
+    ADMIN: '/admin',
+    ADMIN_ADD_QUESTION: 'questions/add',
+    ADMIN_EDIT_QUESTION: 'questions/edit/'
   };
 }
