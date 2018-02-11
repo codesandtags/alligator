@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
+import { UrlConstants } from '../../shared/constants/url-constants';
 
 const routes: Routes = [
   {
@@ -9,11 +10,11 @@ const routes: Routes = [
     component: AdminDashboardComponent
   },
   {
-    path: 'questions/add',
+    path: UrlConstants.ROUTES.ADMIN_ADD_QUESTION,
     component: QuestionFormComponent
   },
   {
-    path: 'questions/edit',
+    path: UrlConstants.ROUTES.ADMIN_EDIT_QUESTION + ':id',
     component: QuestionFormComponent
   }
 ];

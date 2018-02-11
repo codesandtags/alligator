@@ -34,7 +34,8 @@ export class QuestionsMock {
     {
       id: '1',
       question: 'What was the first; the egg or the chicken?',
-      category: QuestionsMock.questionCategories[4],
+      category: QuestionsMock.questionCategories[4].id,
+      categoryName: QuestionsMock.questionCategories[4].name,
       isFavorite: true,
       expectedAnswer: 'Cocoman',
       goal: 'Evaluate the capacity to think out the box',
