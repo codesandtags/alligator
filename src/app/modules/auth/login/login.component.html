@@ -1,6 +1,9 @@
 <section class="signup-form" fxFill fxLayoutAlign="center center">
   <div class="login-cover"></div>
   <mat-card>
+    <mat-error *ngIf="isWrongPassOrUser" class="error-login">
+      User or pass are invalid. Try again my fish!
+    </mat-error>
     <form fxLayout="column" fxLayoutAlign="center center" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
       <mat-form-field>
         <input

@@ -17,6 +17,7 @@ export class QuestionFormComponent implements OnInit, OnDestroy {
   categories: QuestionCategoryModel[];
   questionForm: FormGroup;
   questionSubscription: Subscription;
+  categoriesSubscription: Subscription;
   routeSubscription: Subscription;
   isEditingMode = false;
   formModeText = 'Add';
@@ -35,6 +36,7 @@ export class QuestionFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.categoriesSubscription.unsubscribe();
     if (this.isEditingMode) {
       this.routeSubscription.unsubscribe();
     }
@@ -90,7 +92,7 @@ export class QuestionFormComponent implements OnInit, OnDestroy {
   }
 
   private setCategories(): void {
-    this.questionService
+    this.categoriesSubscription = this.questionService
       .getQuestionCategories()
       .subscribe((data: QuestionCategoryModel[]) => {
         this.categories = data;
