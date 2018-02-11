@@ -6,6 +6,7 @@ import { FirebaseConstants } from '../../constants/firebase-constants';
 import * as firebase from 'firebase/app';
 import { Subject } from 'rxjs/Subject';
 import { QuestionCategoryModel } from '../../models/question-category.model';
+import { Subscription } from 'rxjs/Subscription';
 import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
@@ -19,12 +20,12 @@ export class QuestionService {
 
   public fetchAllQuestions(): void {
     // First retrieve the categories
-    this.db
+    const categoriesSubscription = this.db
       .collection(FirebaseConstants.COLLECTIONS.QUESTION_CATEGORIES)
       .valueChanges()
       .subscribe((categories: QuestionCategoryModel[]) => {
         // Then retrieve the questions
-        this.db
+        const questionsSubscription = this.db
           .collection(FirebaseConstants.COLLECTIONS.QUESTIONS)
           .snapshotChanges()
           .map(dataArray => {
@@ -45,13 +46,15 @@ export class QuestionService {
           })
           .subscribe((questions: QuestionModel[]) => {
             this.questionsChanged.next([...questions]);
+            categoriesSubscription.unsubscribe();
+            questionsSubscription.unsubscribe();
           });
       });
   }
 
   public fetchQuestionById(id: string): void {
     const document = `${FirebaseConstants.COLLECTIONS.QUESTIONS}/${id}`;
-    this.db
+    const questionSubscription = this.db
       .doc(document)
       .valueChanges()
       .subscribe((question: QuestionModel) => {
@@ -59,6 +62,7 @@ export class QuestionService {
           id: id,
           ...question
         });
+        questionSubscription.unsubscribe();
       });
   }
 

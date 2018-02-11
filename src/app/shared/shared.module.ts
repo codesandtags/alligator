@@ -32,9 +32,7 @@ import { AuthService } from '../modules/auth/auth.service';
     QuestionDetailComponent,
     ApplicantProfileComponent
   ],
-  providers: [
-    QuestionService
-  ],
+  providers: [],
   exports: [
     MaterialModule,
     FlexLayoutModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -8,28 +8,43 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
+  isWrongPassOrUser = false;
   private authSubscription: Subscription;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initializeForm();
+    this.addSubscriptions();
+  }
+
+  ngOnDestroy(): void {
+    this.authSubscription.unsubscribe();
   }
 
   public onSubmit(): void {
-    console.log('=> ', this.loginForm);
-
     if (this.loginForm.valid) {
       this.authService.login({
         email: this.loginForm.value.email,
         password: this.loginForm.value.password
       });
     }
+  }
+
+  private addSubscriptions() {
+    this.authSubscription = this.authService.authChange
+      .subscribe((isAuth) => {
+        this.isWrongPassOrUser = false;
+        if (!isAuth) {
+          this.isWrongPassOrUser = true;
+          this.loginForm.get('password').setValue('');
+        }
+      });
   }
 
   private initializeForm(): void {
