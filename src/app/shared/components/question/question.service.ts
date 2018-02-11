@@ -6,7 +6,7 @@ import { FirebaseConstants } from '../../constants/firebase-constants';
 import * as firebase from 'firebase/app';
 import { Subject } from 'rxjs/Subject';
 import { QuestionCategoryModel } from '../../models/question-category.model';
-import { Subscription } from 'rxjs/Subscription';
+import { UiService } from '../../services/ui.service';
 import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
@@ -15,11 +15,13 @@ export class QuestionService {
   questionsChanged = new Subject<QuestionModel[]>();
   questionChanged = new Subject<QuestionModel>();
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore,
+              private uiService: UiService) {
   }
 
   public fetchAllQuestions(): void {
     // First retrieve the categories
+    this.uiService.loadingStateChange.next(true);
     const categoriesSubscription = this.db
       .collection(FirebaseConstants.COLLECTIONS.QUESTION_CATEGORIES)
       .valueChanges()
@@ -46,8 +48,12 @@ export class QuestionService {
           })
           .subscribe((questions: QuestionModel[]) => {
             this.questionsChanged.next([...questions]);
+            this.uiService.loadingStateChange.next(false);
             categoriesSubscription.unsubscribe();
             questionsSubscription.unsubscribe();
+          }, error => {
+            console.error('Uppps there was an error fetching the questions ', error);
+            this.uiService.loadingStateChange.next(false);
           });
       });
   }

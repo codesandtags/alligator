@@ -1,4 +1,4 @@
-<section class="signup-form" fxFill fxLayoutAlign="center center">
+<section class="signup-form" fxFill fxLayout="column" fxLayoutAlign="center center">
   <div class="login-cover"></div>
   <mat-card>
     <mat-error *ngIf="isWrongPassOrUser" class="error-login">
@@ -29,7 +29,10 @@
         <mat-error *ngIf="loginForm.get('password').hasError('minlength')">Has to be at least 6 characters</mat-error>
       </mat-form-field>
       <br>
-      <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid" >Login</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid" *ngIf="!isLoading">Login</button>
+      <div *ngIf="isLoading" fxLayoutAlign="start" fxFlex="50px">
+        <mat-spinner [diameter]="40"></mat-spinner>
+      </div>
     </form>
   </mat-card>
 </section>

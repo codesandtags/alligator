@@ -11,32 +11,32 @@ const routes: Routes = [
   {
     path: 'reports',
     loadChildren: 'app/modules/reports/reports.module#ReportsModule',
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'interview',
     loadChildren: 'app/modules/interview/interview.module#InterviewModule',
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'admin',
     loadChildren: 'app/modules/admin/admin.module#AdminModule',
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'schedule',
     loadChildren: 'app/modules/schedule/schedule.module#ScheduleModule',
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'home',
     loadChildren: 'app/modules/home/home.module#HomeModule',
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: '',
     loadChildren: 'app/modules/home/home.module#HomeModule',
-    canActivate: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: '404',

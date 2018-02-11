@@ -73,7 +73,7 @@ export class QuestionFormComponent implements OnInit, OnDestroy {
 
   private openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 4000,
+      duration: 2500,
       verticalPosition: 'top'
     });
   }

@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { QuestionService } from './shared/components/question/question.service';
+import { UiService } from './shared/services/ui.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { QuestionService } from './shared/components/question/question.service';
   providers: [
     AuthService,
     AuthGuard,
-    QuestionService
+    QuestionService,
+    UiService
   ],
   bootstrap: [AppComponent]
 })
