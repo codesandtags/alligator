@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs/Subscription';
 import { UiService } from '../../../shared/services/ui.service';
+import { Store } from '@ngrx/store';
+import { StateModel } from '../../../shared/models/state.model';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
@@ -13,24 +16,23 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   isWrongPassOrUser = false;
-  isLoading = false;
-  private loadingSubscription: Subscription;
+  isLoading$: Observable<boolean>;
   private authSubscription: Subscription;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
-              private uiService: UiService) {
+              private uiService: UiService,
+              private store: Store<{ ui: StateModel }>) {
   }
 
   ngOnInit(): void {
     this.initializeForm();
-    this.addSubscriptions();
     this.listenLoading();
+    this.addSubscriptions();
   }
 
   ngOnDestroy(): void {
     this.authSubscription.unsubscribe();
-    this.loadingSubscription.unsubscribe();
   }
 
   public onSubmit(): void {
@@ -61,9 +63,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private listenLoading() {
-    this.loadingSubscription = this.uiService.loadingStateChange
-      .subscribe(isLoading => {
-        this.isLoading = isLoading;
-      });
+    this.isLoading$ = this.store.map(state => {
+      return state.ui.isLoading;
+    });
   }
 }

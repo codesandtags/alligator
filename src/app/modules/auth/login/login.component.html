@@ -29,8 +29,8 @@
         <mat-error *ngIf="loginForm.get('password').hasError('minlength')">Has to be at least 6 characters</mat-error>
       </mat-form-field>
       <br>
-      <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid" *ngIf="!isLoading">Login</button>
-      <div *ngIf="isLoading" fxLayoutAlign="start" fxFlex="50px">
+      <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid" *ngIf="!(isLoading$ | async)">Login</button>
+      <div *ngIf="(isLoading$ | async)" fxLayoutAlign="start" fxFlex="50px">
         <mat-spinner [diameter]="40"></mat-spinner>
       </div>
     </form>
